@@ -1,0 +1,59 @@
+@import "../../../styles";
+$linear-gradient: linear-gradient(to right top, #743dff, #a47dff);
+$button-color: linear-gradient(to right top, #ffab3d, #ffd67d);
+.register {
+  overflow: auto;
+  overflow-x: hidden;
+  height: 100vh;
+
+  h1 {
+    font-weight: bold;
+  }
+
+  .arrow-back-icon {
+    margin-bottom: 1rem;
+    background-color: #936eeb;
+  }
+
+  &-sidePanel {
+    background: $linear-gradient;
+
+    .sidePanel-content {
+      margin-top: 2rem;
+    }
+
+    h3 button {
+      color: $achor-tag-color;
+    }
+  }
+
+  &-form {
+    a {
+      font-weight: bold;
+      text-decoration: none;
+    }
+    button {
+      @extend %button;
+      width: inherit;
+      margin-top: 1rem;
+    }
+  }
+}
+
+@media (max-width: 37rem) {
+  h1,
+  h3 {
+    text-align: center;
+  }
+}
+
+.registerSidePanel {
+  background: #2c2c2c;
+  h3 button {
+    color: $achor-tag-darkTheme;
+  }
+}
+
+.links {
+  color: $achor-tag-darkTheme;
+}

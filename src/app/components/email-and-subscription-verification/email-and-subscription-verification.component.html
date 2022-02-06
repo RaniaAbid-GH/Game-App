@@ -1,0 +1,63 @@
+<mat-progress-bar
+  *ngIf="isProgressBarVisible"
+  mode="indeterminate"
+></mat-progress-bar>
+<div class="email-verification">
+  <div *ngIf="!(isEmailVerified | async)" fxLayout="column">
+    <h1>To continue, {{ game_name }} must approve your email address</h1>
+    <h2>
+      {{ game_name }} sent a verification email to
+      <strong>{{ userEmail }} - </strong>
+      Click on the link sent to your mailbox. 
+      <br>
+      Your account will be approved and therefore you will then be able to start to play.
+      <br>
+      <span
+        class="reload"
+        (click)="onReloadUser()"
+      >
+        Click here  </span
+      >
+      <strong>&nbsp;to start the game. </strong>
+    </h2>
+    <button
+      fxFlex.xs="100"
+      fxFlexAlign="center"
+      mat-flat-button
+      color="accent"
+      *ngIf="!(isEmailVerified | async)"
+      (click)="onWrongEmail()"
+    >
+    Wrong email address?
+    </button>
+  </div>
+  <div *ngIf="isEmailVerified | async" fxLayout="column">
+    <h1 *ngIf="selectedItemCount === 0">
+        Create or Join a room
+    </h1>
+    <div class="categories-container">
+      <mat-button-toggle
+        *ngFor="let categorie of interestCenter$ | async"
+        #toggle
+        [style.background]="
+          toggle.checked ? categorie.categoryColor : 'lightgray'
+        "
+        [value]="categorie"
+        (click)="onInterestCenterselected(toggle.value, toggle.checked)"
+        [style.color]="toggle.checked ? 'black' : ''"
+        >{{ categorie.categoryName }}</mat-button-toggle
+      >
+    </div>
+    <button
+      fxFlex.xs="100"
+      fxFlexAlign="end"
+      mat-flat-button
+      color="primary"
+      *ngIf="isEmailVerified | async"
+      [disabled]="isNotRecommandedNumber"
+      (click)="onAddInterestCenter()"
+    >
+      Start Game
+    </button>
+  </div>
+</div>

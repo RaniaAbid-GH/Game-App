@@ -1,0 +1,41 @@
+@use "../../../styles" as *;
+
+.email-verification {
+  height: 100vh;
+  padding: 4rem;
+
+  h1 {
+    font-weight: bold;
+    text-align: center;
+  }
+
+  h2 {
+    text-align: center;
+  }
+
+  span {
+    text-decoration: underline;
+    color: $achor-tag-color;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  .categories-container {
+    border: 2px solid black;
+    border-radius: 1rem;
+    padding: 1rem;
+  }
+
+  mat-button-toggle {
+    margin: 0.2rem;
+  }
+
+  button {
+    margin: 0.5rem;
+    @extend %button;
+  }
+}
+// for dark theme
+.darkLink {
+  color: $achor-tag-darkTheme;
+}

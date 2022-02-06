@@ -1,1 +1,57 @@
-/* You can add global styles to this file, and also import other style files */
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif; //add font-family (Poppins from Google Fonts)
+  &::-webkit-scrollbar {  //edit the scrollbar style (on the right)
+    width: 0.6rem;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 0.5rem;
+    background: darkgray;
+  }
+}
+
+//add the colors that we are going to use
+$white-color: #fafafa;
+$black-color: #424242;
+$primary: #130634;
+$accent: #ffab00;
+$accent-low-opacity: #f7be1f34;
+$primary-low-opacity: #1306345d;
+$achor-tag-color: darkblue;
+$achor-tag-darkTheme: lightseagreen;
+
+//add buttons (Sign In/Register) style 
+%button {
+  border-radius: 0.5rem;
+  transition: transform 250ms ease-in-out;
+
+  &:hover {
+    transform: scale(1.02);
+  }
+}
+//@keyframes: rule that controls the animation
+//fade: the image come gradually into or out of view, or merge into another shot
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+//personalize the scrollbar
+@mixin scrollbar($width, $border-radius) {
+  &::-webkit-scrollbar {
+    width: $width;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: $border-radius;
+  }
+}

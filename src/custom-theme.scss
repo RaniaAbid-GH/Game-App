@@ -1,0 +1,44 @@
+@import "~@angular/material/theming";
+
+//personalize typography
+$custom-typography: mat-typography-config(
+  $font-family: "Poppins, sans-serif",
+);
+@include angular-material-typography($custom-typography);
+@include mat-core($custom-typography);
+
+//declaration of the light theme
+$light-primary: mat-palette($mat-indigo, 900);
+$light-accent: mat-palette($mat-amber);
+$light-warn: mat-palette($mat-red);
+
+$light-theme: mat-light-theme(
+  (
+    color: (
+      primary: $light-primary,
+      accent: $light-accent,
+      warn: $light-warn,
+    ),
+  )
+);
+
+@include angular-material-theme($light-theme);
+
+// Declaration of the dark theme 
+$dark-primary: mat-palette($mat-amber);
+$dark-accent: mat-palette($mat-indigo, 900);
+$dark-warn: mat-palette($mat-deep-orange);
+
+$dark-theme: mat-dark-theme(
+  (
+    color: (
+      primary: $dark-primary,
+      accent: $dark-accent,
+      warn: $dark-warn,
+    ),
+  )
+);
+
+.dark-theme {
+  @include angular-material-color($dark-theme);
+}

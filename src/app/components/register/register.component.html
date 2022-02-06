@@ -1,0 +1,211 @@
+<mat-progress-bar *ngIf="isValidForm" mode="indeterminate"></mat-progress-bar>
+<div class="register" fxLayout>
+    <div
+      fxHide.xs
+      fxHide.sm
+      fxFlex="1 2 30"
+      fxLayout="Column"
+      class="register-sidePanel"
+      fxLayoutAlign="center start"
+    >
+      <div class="sidePanel-content" fxFlex="80" fxLayout="Column">
+        <button
+          class="arrow-back-icon mat-elevation-z1"
+          mat-icon-button
+          routerLink="../landingPage"
+          matTooltip="Retun to homepage"
+          matTooltipPosition="after"
+        >
+          <mat-icon>arrow_back</mat-icon>
+        </button>
+        <h1>{{ game_name }}</h1>
+        <h2>{{ description }}</h2>
+        <h3>
+          Already a member?
+          <button mat-button>Sign In</button>
+        </h3>
+        <h3>
+            <br>
+
+        </h3>
+        <img
+          fxFlex="60"
+          src="../assets/184050.png"
+          alt="img-pic-share"
+        />
+      </div>
+    </div>
+    <div
+    class="register-container"
+    fxFlex="2 1 70"
+    fxFlex.sm="100"
+    fxFlex.xs="100"
+    fxLayout="row"
+    fxLayoutAlign="center center"
+  >
+    <div fxFlex="60" fxFlex.xs="80" fxLayout="column">
+      <button
+        fxHide.lg
+        fxHide.md
+        class="arrow-back-icon mat-elevation-z1"
+        mat-icon-button
+        routerLink=".."
+        matTooltip="Return to homepage"
+        matTooltipPosition="after"
+      >
+        <mat-icon>arrow_back</mat-icon>
+      </button>
+      <h1 mat-title>Register and become a part of {{ game_name}}</h1>
+      <h3>
+      Write something here if you want 
+      </h3>
+      <form
+      class="register-form"
+      fxLayout="row wrap"
+      fxLayoutAlign="space-between center"
+      [formGroup]="registerForm"
+      (ngSubmit)="onSubmit()"
+    >
+      <mat-form-field appearance="outline" fxFlex="48">
+        <mat-label>Name</mat-label>
+        <input
+          type="type"
+          matInput
+          formControlName="firstName"
+          placeholder="Enter your name"
+        />
+        <mat-error *ngIf="firstName?.hasError('required')">
+          Complete your name please!
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" fxFlex="48">
+        <mat-label>Last Name</mat-label>
+        <input
+          type="email"
+          matInput
+          formControlName="lastName"
+          placeholder="Enter your last name"
+        />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" fxFlex="100">
+        <mat-label>Email</mat-label>
+        <input
+          type="email"
+          matInput
+          formControlName="email"
+          placeholder="Email Address"
+        />
+        <mat-error
+          *ngIf="email?.hasError('email') && !email?.hasError('required')"
+        >
+          Invalid Email
+        </mat-error>
+        <mat-error *ngIf="email?.hasError('required')">
+          Email is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" fxFlex="48">
+        <mat-label>Password</mat-label>
+        <input
+          matInput
+          [type]="isHide ? 'password' : 'text'"
+          formControlName="password"
+        />
+        <button
+          mat-icon-button
+          matSuffix
+          (click)="isHide = !isHide"
+          [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="isHide"
+        >
+          <mat-icon>{{ isHide ? "visibility_off" : "visibility" }}</mat-icon>
+        </button>
+        <mat-error
+          *ngIf="
+            password?.hasError('minlength') && !password?.hasError('required')
+          "
+        >
+          Minimum 6 characters required
+        </mat-error>
+        <mat-error *ngIf="password?.hasError('required')">
+          Password is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" fxFlex="48">
+        <mat-label>Confirm your password</mat-label>
+        <input
+          matInput
+          [type]="isHide ? 'password' : 'text'"
+          formControlName="confirmPassword"
+        />
+        <button
+          mat-icon-button
+          matSuffix
+          (click)="isHide = !isHide"
+          [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="isHide"
+        >
+          <mat-icon>{{ isHide ? "visibility_off" : "visibility" }}</mat-icon>
+        </button>
+        <mat-error
+          *ngIf="
+            confirmPassword?.hasError('passwordMismatch') &&
+            !confirmPassword?.hasError('required')
+          "
+        >
+          Passwords do not match
+        </mat-error>
+        <mat-error *ngIf="confirmPassword?.hasError('required')">
+          Please confirm your password
+        </mat-error>
+      </mat-form-field>
+
+      <div fxLayout="row">
+        <div fxFlex="2 1 100">
+            By creating an account, you accept our
+          <a
+            href="https://#"
+            target="_blank"
+            rel="noreferrer"
+            >Terms of Use</a
+          >, our
+          <a
+            href="https://#"
+            target="_blank"
+            rel="noreferrer"
+            >Privacy Policy</a
+          >
+          and our
+          <a
+            href="https://#"
+            target="_blank"
+            rel="noreferrer"
+            >Notification Settings</a
+          >
+          by default
+        </div>
+      </div>
+      <button
+        mat-flat-button
+        color="primary"
+        type="submit"
+        [disabled]="isValidForm"
+      >
+        Create an account
+      </button>
+      <button
+        fxHide.lg
+        fxHide.md
+        mat-flat-button
+        color="accent"
+      >
+        Sign In
+      </button>
+    </form>
+  </div>
+</div>
+</div>
